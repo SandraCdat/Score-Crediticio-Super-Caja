@@ -1,0 +1,60 @@
+CONSULTAS EN BIG QUERY
+Cuartiles
+WITH quartiles AS (
+  SELECT user_id, 
+  CASE 
+    WHEN age <= 41 THEN 1
+    WHEN age > 41 AND age <= 52 THEN 2
+    WHEN age > 52 AND age <= 63 THEN 3
+    WHEN age > 63 THEN 4
+  END AS age_quartile,
+  CASE 
+    WHEN last_month_salary <= 3431 THEN 1
+    WHEN last_month_salary > 3431 AND last_month_salary <= 5416 THEN 2
+    WHEN last_month_salary > 5416 AND last_month_salary <= 8300 THEN 3
+    WHEN last_month_salary > 8300 THEN 4
+  END AS last_month_salary_quartile,
+  CASE 
+    WHEN number_dependents = 0 THEN 1
+    WHEN number_dependents >= 1 THEN 2
+  END AS number_dependents_quartile,
+  CASE 
+    WHEN Prestamo_inmobiliario = 0 THEN 1
+    WHEN Prestamo_inmobiliario = 1 THEN 2
+    WHEN Prestamo_inmobiliario >1 THEN 3
+  END AS Prestamo_inmobiliario_quartile,
+  CASE 
+    WHEN Otro_tipo_prestamo <= 4 THEN 1
+    WHEN Otro_tipo_prestamo > 4 AND Otro_tipo_prestamo <= 7 THEN 2
+    WHEN Otro_tipo_prestamo > 7 AND Otro_tipo_prestamo <= 10 THEN 3
+    WHEN Otro_tipo_prestamo > 10 THEN 4
+  END AS Otro_tipo_prestamo_quartile,
+  CASE 
+    WHEN Total_prestamos <= 5 THEN 1
+    WHEN Total_prestamos > 5 AND Total_prestamos <= 8 THEN 2
+    WHEN Total_prestamos > 8 AND Total_prestamos <= 11 THEN 3
+    WHEN Total_prestamos > 11 THEN 4
+  END AS Total_prestamos_quartile,
+  CASE 
+            WHEN more_90_days_overdue <= 1 THEN 1
+            WHEN more_90_days_overdue >1 AND more_90_days_overdue <= 3 THEN 2
+            WHEN more_90_days_overdue >3 AND more_90_days_overdue <= 6 THEN 3
+            WHEN more_90_days_overdue >6 THEN 4
+        END AS more_90_days_overdue_quartile,
+  CASE 
+    WHEN using_lines_not_secured_personal_assets <= 0.03 THEN 1
+    WHEN using_lines_not_secured_personal_assets > 0.03 AND using_lines_not_secured_personal_assets<= 0.15 THEN 2
+    WHEN using_lines_not_secured_personal_assets > 0.15 AND using_lines_not_secured_personal_assets <= 0.55 THEN 3
+    WHEN using_lines_not_secured_personal_assets > 0.55 THEN 4
+  END AS using_lines_not_secured_personal_assets_quartile,
+  CASE 
+    WHEN debt_ratio <= 0.17 THEN 1
+    WHEN debt_ratio > 0.17 AND debt_ratio<= 0.36 THEN 2
+    WHEN debt_ratio > 0.36 AND debt_ratio <= 0.87 THEN 3
+    WHEN debt_ratio > 0.87 THEN 4
+  END AS debt_ratio_quartile,
+  FROM `proyecto3-429523.Proyecto3.banco_all_data`
+)
+SELECT a.*, q.* EXCEPT(user_id)
+FROM `proyecto3-429523.Proyecto3.banco_all_data` a
+LEFT JOIN quartiles q ON a.user_id = q.user_id
