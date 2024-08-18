@@ -1,6 +1,6 @@
-CONSULTAS EN BIG QUERY
-Cuartiles
-WITH quartiles AS (
+### CONSULTAS EN BIG QUERY
+## Cuartiles
+```WITH quartiles AS (
   SELECT user_id, 
   CASE 
     WHEN age <= 41 THEN 1
@@ -57,4 +57,4 @@ WITH quartiles AS (
 )
 SELECT a.*, q.* EXCEPT(user_id)
 FROM `proyecto3-429523.Proyecto3.banco_all_data` a
-LEFT JOIN quartiles q ON a.user_id = q.user_id
+LEFT JOIN quartiles q ON a.user_id = q.user_id```
