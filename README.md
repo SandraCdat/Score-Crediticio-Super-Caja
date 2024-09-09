@@ -1,4 +1,4 @@
-# Score-Crediticio-Super-Caja
+# “Automatización del Score Crediticio en el banco Super Caja"
 En el actual escenario financiero, la disminución de las tasas de interés ha generado un notable aumento en la demanda de crédito en el banco "Super Caja". Sin embargo, esta creciente demanda ha sobrecargado al equipo de análisis de crédito, que se encuentra actualmente inmerso en un proceso manual ineficiente y demorado para evaluar las numerosas solicitudes de préstamo. Frente a este desafío, se propone una solución innovadora: la automatización del proceso de análisis mediante avanzadas técnicas de análisis de datos. 
 
 ![](https://img.freepik.com/vector-gratis/empresario-tirando-velocimetro-pobre-buen-rendimiento_74855-20012.jpg?t=st=1724355313~exp=1724358913~hmac=a7e0f790e547a365ed68fa121f8f0c56c3ca5d115adb1c5b90c617cd048cec4b&w=1060)
